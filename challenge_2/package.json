@@ -1,0 +1,17 @@
+{
+  "name": "challenge_2",
+  "version": "1.0.0",
+  "description": "Create a single page app that will convert JSON files to csv",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.3",
+    "nodemon": "^1.17.4"
+  }
+}
