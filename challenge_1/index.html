@@ -7,14 +7,31 @@
   <title>Tic Tac Toe</title>
 </head>
 
-<body>
+<body onload="initGame()">
   <div>
     <h2 style="color:rgb(59, 65, 72)">Tic Tac Toe</h2>
   </div>
-
+  <div>
+    <h5 id="message">Message goes here</h5>
+  </div>
   <!-- Generate Table -->
-  <table id="game-board"></table>
-
+  <table id="game-board" border="1">
+    <tr class="row">
+      <td class="cell" onClick="nextTurn(this)"></td>
+      <td class="cell" onClick="nextTurn(this)"></td>
+      <td class="cell" onClick="nextTurn(this)"></td>
+    </tr>
+    <tr class="row">
+      <td class="cell" onClick="nextTurn(this)"></td>
+      <td class="cell" onClick="nextTurn(this)"></td>
+      <td class="cell" onClick="nextTurn(this)"></td>
+    </tr>
+    <tr class="row">
+      <td class="cell" onClick="nextTurn(this)"></td>
+      <td class="cell" onClick="nextTurn(this)"></td>
+      <td class="cell" onClick="nextTurn(this)"></td>
+    </tr>
+  </table>
   <script src="./app.js"></script>
   <link rel="stylesheet" href="./style.css"></link>
 </body>
