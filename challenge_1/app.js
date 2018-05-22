@@ -1,6 +1,10 @@
 // init game board 
 let initGame = () => {
+  for (let i = 1; i <= 9; i++) {
+    restart(i);
+  }
   document.turn = 'X';
+  document.winner = null;
   displayMessage(document.turn + ' goes first');
 };
 
@@ -9,7 +13,9 @@ let displayMessage = (msg) => {
 };
 
 let nextTurn = (cell) => {
-  if (cell.innerText === '') {
+  if (document.winner !== null) {
+    displayMessage(document.turn + ' has already won!')
+  } else if (cell.innerText === '') {
     cell.innerText = document.turn;
     switchTurn();
   } else {
@@ -18,14 +24,65 @@ let nextTurn = (cell) => {
 };
 
 let switchTurn = () => {
-  if (document.turn === 'X') {
+  if (checkWinner(document.turn)) {
+    displayMessage(document.turn + ' wins!');
+    document.winner = document.turn;
+  } else if (document.turn === 'X') {
     document.turn = 'O';
+    displayMessage(document.turn + ' \'s turn');
   } else {
     document.turn = 'X'
+    displayMessage(document.turn + ' \'s turn');
   }
-  displayMessage(document.turn + ' \'s turn');
+  
 };
 
+// let itIsDraw = (move) => {
+//   let finalDrawResult = false;
+
+//   for (let j = 1; j <= 9; j++) {
+//     if (document.getElementById('tr').innerHTML !== null && document.winner === null) {
+//       finalDrawResult = true;
+//     }
+//   }
+
+//   return finalDrawResult;
+// };
+
+let checkWinner = (move) => {
+  let finalWinResult = false;
+  
+  if (checkRow(1, 2, 3, move) ||
+      checkRow(4, 5, 6, move) ||
+      checkRow(7, 8, 9, move) ||
+      checkRow(1, 4, 7, move) ||
+      checkRow(2, 5, 8, move) ||
+      checkRow(3, 6, 9, move) ||
+      checkRow(1, 5, 9, move) ||
+      checkRow(3, 5, 7, move)) {
+        finalWinResult = true;
+  }
+
+  return finalWinResult;
+};
+
+let checkRow = (a, b, c, move) => {
+  let result = false;
+
+  if (getCell(a) === move && getCell(b) === move && getCell(c) === move) {
+    result = true;
+  }
+
+  return result;
+};
+
+let getCell = (number) => {
+  return document.getElementById('s' + number).innerText;
+};
+
+let restart = (number) => {
+  document.getElementById('s' + number).innerText = '';
+}
   //gameBoard set to the table tag on HTML
   // let gameBoard = document.getElementById('game-board');
   // let counter = 1;
