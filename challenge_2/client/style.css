@@ -1,0 +1,35 @@
+h1 {
+  margin: 0 auto;
+  width: 400px;
+}
+
+form {
+  margin: 0 auto;
+  width: 400px;
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+form div + div {
+  margin-top: 1em;
+}
+
+textarea {
+  vertical-align: top;
+  font: 1em sans-serif;
+  width: 400px;
+  height: 5em;
+  box-sizing: border-box;
+  border: 1px solid #999;
+}
+
+textarea:focus {
+  border-color: #000;
+}
+
+.button {
+  padding-left: 10px;
+  text-align: center;
+  line-height: 10px;
+}
