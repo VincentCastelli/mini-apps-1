@@ -26,9 +26,8 @@ console.log(createBoard(3, 3));
 // }
 
 //create an event listener for a click event on a cell
+let handleClick = () => {
+  let element = document.getElementsByClassName('cell');
 
-// let element = document.getElementsByClassName('cell');
-
-//   element.addEventListner('onClick', function () {
-//     console.log('I was clicked!');
-//   })
+  element.onClick = () => console.log('I was clicked!');
+}
