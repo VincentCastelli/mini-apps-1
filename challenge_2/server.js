@@ -14,18 +14,11 @@ app.use(express.static('./client'))
 
 app.get('/', function (req, res) {
   res.send('GET request')
-  // let data = '';
-  // res.on('data', (chunk) => {
-  //   data += chunk;
-  // }).on('end', () => {
-  //   res.sendFile('./client/index.html');
-  //   res.end();
-  // })
 })
 
 app.post('/', function (req, res) {
-  console.log (req.body);
-  res.send('POST request')
+  // convert JSON to CSV and save and send it back
+  res.send(req.body);
 })
 
 app.listen(3000, function () {

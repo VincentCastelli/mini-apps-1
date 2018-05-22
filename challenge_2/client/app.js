@@ -7,9 +7,6 @@ $('button').click( function(event) {
       data: $('form#Submit').serialize(),
       success: function(data) {
         console.log('Sent to get converted!')
-      },
-      error: function(err) { 
-        console.log('Something went wrong!')
       }
 
   });
