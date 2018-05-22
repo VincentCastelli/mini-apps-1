@@ -1,12 +1,16 @@
-
-// generate a 3x3 game board 
 let currentPlayer = 0;
 let turn = 0;
+//store player selections in an array to match against winningCombos
+let playerOneSelections = new Array();
+let playerTwoSelections = new Array();
 
+// generate a 3x3 game board 
 let createBoard = () => {
+  //gameBoard set to the table tag on HTML
   let gameBoard = document.getElementById('game-board');
-  let counter = 0;
+  let counter = 1;
 
+  // nested for loop to generate 3x3 col and rows 
   for (let i = 0; i < 3; i++) {
     let row = document.createElement('tr');
 
@@ -14,10 +18,39 @@ let createBoard = () => {
       let col = document.createElement('td');
       col.innerHTML = counter;
 
+      let clickHandler = (event) => {
+        if (currentPlayer === 0) {
+            this.innerHTML = 'X';
+            playerOneSelections.push(parseInt(this.id));
+            playerOneSelections.sort(function(a, b) { return a - b });
+        } else {
+            this.innerHTML = 'O';
+            playerTwoSelections.push(parseInt(this.id));
+            playerTwoSelections.sort(function(a, b) { return a - b });
+        }
+
+        turn++;
+        // check if winner 
+        let winner = checkWinner();
+          if (winner) {
+            alert(currentPlayer, ' has won the game!');
+          } else {
+            if (currentPlayer === 0) {
+              currentPlayer = 1;
+            } else {
+              currentPlayer = 0;
+            }
+          }
+      };
+      col.addEventListener('click', clickHandler);
+
       row.appendChild(col);
+      counter++;
     }
     gameBoard.appendChild(row);
   }
+
+  insertCombos();
   // let gameBoard = [];
   // let gameBoardRow = [];
   // let size = n1 * n2;
@@ -61,13 +94,9 @@ let insertCombos = () => {
     winningCombos.push([3, 5, 7]);
 };
 
-let markCell = () => {
-
-}
-
 let checkWinner = () => {
 
-}
+};
 
 let reset = () => {
 
