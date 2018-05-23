@@ -13,14 +13,17 @@
   <div>
     <h1>CSV File Generator</h1>
   </div>
-  <form action="http://127.0.0.1:3000" value="Submit" method="POST">
+  <form action="http://127.0.0.1:3000" method="POST">
     <textarea>
         JSON goes here...
       </textarea>
     <section>
-      <button class="button">Create CSV</button>
+      <button id="submit" class="button">Create CSV</button>
     </section>
   </form>
+  <h2>CSV Report</h2>
+  <div id="result"></div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
   <script type="text/javascript" src="app.js"></script>
