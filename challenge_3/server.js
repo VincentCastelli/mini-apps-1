@@ -2,11 +2,9 @@ const express = require('express');
 
 const app = express();
 
-app.use(express.static('/public'));
+const path = require('path');
 
-app.get('/', (req, res) => {
-  res.send('This is working!');
-});
+app.use(express.static(__dirname + '/compiled'));
 
 app.post('/', (req, res) => {
   res.send('Post sent!');
