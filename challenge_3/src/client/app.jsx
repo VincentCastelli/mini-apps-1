@@ -5,15 +5,17 @@ class App extends React.Component {
     this.state = {
       homePage: true,
       formOne: false,
-      formOneValue: null,
       formTwo: false,
       formThree: false,
-      purchase: false
+      purchase: false,
+      name: '',
+      email: '',
+      password: ''
     };
 
     this.handleCheckout = this.handleCheckout.bind(this);
     this.handleFormOne = this.handleFormOne.bind(this);
-    this.handleFormOneSubmit = this.handleFormOneChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleFormOneSubmit = this.handleFormOneSubmit.bind(this);
   }
 
@@ -31,9 +33,9 @@ class App extends React.Component {
     });
   }
 
-  handleFormOneChange(event) {
-    this.setState({
-      formOneValue: event.target.value
+  handleChange(evt) {
+    this.setState({ 
+      [evt.target.name]: evt.target.value 
     });
     event.preventDefault();
   }
@@ -55,7 +57,7 @@ class App extends React.Component {
         }
         {this.state.formOne &&
           <div>
-            <FormOne formOneValue={this.state.formOneValue} handleFormOne={this.handleFormOne} handleFormOneSubmit={this.handleFormOneSubmit} handleFormOneChange={this.handleFormOneChange} />
+            <FormOne name={this.state.name} email={this.state.email} password={this.state.password} handleFormOne={this.handleFormOne} handleFormOneSubmit={this.handleFormOneSubmit} handleChange={this.handleChange} />
           </div>
         }
       </div>
@@ -85,15 +87,15 @@ let FormOne = (props) => {
       <form onSubmit={props.handleFormOneSubmit}>
         <label>
           Name:
-          <input type="text" value={props.formOneValue} onChange={props.handleFormOneChange} />
+          <input type="text" name="name" value={props.name} onChange={props.handleChange} />
         </label>
         <label>
           Email:
-          <input type="text" value={props.formOneValue} onChange={props.handleFormOneChange} />
+          <input type="text" name="email" value={props.email} onChange={props.handleChange} />
         </label>
         <label>
           Password:
-          <input type="text" value={props.formOneValue} onChange={props.handleFormOneChange} />
+          <input type="password" name="password" value={props.password} onChange={props.handleChange} />
         </label>
       </form>
       <button
