@@ -10,7 +10,15 @@ div {
   line-height: 400px;
 }
 
-.btnCheckout {
+.formOne {
+  position: relative;
+  margin: auto;
+  right: 1.5%;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 100px;
+}
+
+.btn {
   position: absolute;
   top: 38%;
   left: 45%;

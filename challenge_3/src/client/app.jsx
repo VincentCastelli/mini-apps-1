@@ -5,12 +5,16 @@ class App extends React.Component {
     this.state = {
       homePage: true,
       formOne: false,
+      formOneValue: null,
       formTwo: false,
       formThree: false,
       purchase: false
     };
 
     this.handleCheckout = this.handleCheckout.bind(this);
+    this.handleFormOne = this.handleFormOne.bind(this);
+    this.handleFormOneSubmit = this.handleFormOneChange.bind(this);
+    this.handleFormOneSubmit = this.handleFormOneSubmit.bind(this);
   }
 
   handleCheckout() {
@@ -18,6 +22,27 @@ class App extends React.Component {
       homePage: false,
       formOne: true
     });
+  }
+
+  handleFormOne() {
+    this.setState({
+      formOne: false,
+      formTwo: true
+    });
+  }
+
+  handleFormOneChange(event) {
+    this.setState({
+      formOneValue: event.target.value
+    });
+    event.preventDefault();
+  }
+
+  handleFormOneSubmit(event) {
+    this.setState({
+      formOneValue: this.state.value
+    });
+    event.preventDefault();
   }
 
   render() {
@@ -30,7 +55,7 @@ class App extends React.Component {
         }
         {this.state.formOne &&
           <div>
-            <FormOne />
+            <FormOne formOneValue={this.state.formOneValue} handleFormOne={this.handleFormOne} handleFormOneSubmit={this.handleFormOneSubmit} handleFormOneChange={this.handleFormOneChange} />
           </div>
         }
       </div>
@@ -45,7 +70,7 @@ let HomePage = (props) => {
         <h1 className="homePage">HomePage</h1>
       </div>
       <button
-        className="btnCheckout"
+        className="btn Checkout"
         onClick={props.handleCheckout}>{'Checkout'}</button>
     </div>
   )
@@ -54,9 +79,28 @@ let HomePage = (props) => {
 let FormOne = (props) => {
   return (
     <div>
-      <h1 className="formOne">Basic Information</h1>
+      <div>
+        <h1 className="formOne">Account Information</h1>
+      </div>
+      <form onSubmit={props.handleFormOneSubmit}>
+        <label>
+          Name:
+          <input type="text" value={props.formOneValue} onChange={props.handleFormOneChange} />
+        </label>
+        <label>
+          Email:
+          <input type="text" value={props.formOneValue} onChange={props.handleFormOneChange} />
+        </label>
+        <label>
+          Password:
+          <input type="text" value={props.formOneValue} onChange={props.handleFormOneChange} />
+        </label>
+      </form>
+      <button
+        className="btn FormOne" value="Submit"
+        onClick={props.handleFormOne}>{'Next'}</button>
     </div>
-  )
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
