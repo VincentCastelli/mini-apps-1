@@ -2,16 +2,18 @@ div {
   text-align: center;
 }
 
-h1 {
+.homePage {
+  position: relative;
   margin: auto;
+  right: 1.5%;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 400px;
 }
 
-button {
+.btnCheckout {
   position: absolute;
   top: 38%;
-  left: 46.5%;
-  border-radius: 4px;
+  left: 45%;
+  border-radius: 6px;
   font-size: 18px;
 }
