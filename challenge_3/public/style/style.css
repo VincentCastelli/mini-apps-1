@@ -17,6 +17,21 @@ div {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 100px;
 }
+.formTwo {
+  position: relative;
+  margin: auto;
+  right: 1.5%;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 100px;
+}
+
+.formThree {
+  position: relative;
+  margin: auto;
+  right: 1.5%;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 100px;
+}
 
 .btn {
   position: absolute;
